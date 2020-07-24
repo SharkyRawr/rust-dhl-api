@@ -1,0 +1,23 @@
+{
+  "sendungen": [
+    {
+      "id": "5233611250866",
+      "hasCompleteDetails": true,
+      "sendungsinfo": { "gesuchteSendungsnummer": "5233611250866" },
+      "sendungsdetails": {
+        "sendungsnummern": { "sendungsnummer": "5233611250866" },
+        "sendungsverlauf": { "fortschritt": 0, "farbe": 0 },
+        "istZugestellt": false,
+        "ruecksendung": false,
+        "retoure": false,
+        "expressSendung": false
+      },
+      "versandDatumBenoetigt": false,
+      "nichtAnzeigen": true,
+      "sendungNichtGefunden": {
+        "keineDatenVerfuegbar": true,
+        "keineDhlPaketSendung": true
+      }
+    }
+  ]
+}

@@ -53,7 +53,7 @@ mod tests {
         assert_eq!(item_details.destination_country.as_ref().unwrap(), "Germany");
         let history = &item_details.history;
         assert_eq!(history.steps, 5);
-        let events = &history.events.as_ref().unwrap();
+        let events = history.events.as_ref().unwrap();
         assert_ne!(events.len(), 0);
         assert_eq!(events.first().unwrap().return_shipment, false);
     }
