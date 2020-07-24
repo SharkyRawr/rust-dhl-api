@@ -34,11 +34,19 @@ pub struct DHLPackageItemHistoryEvent {
 #[derive(Deserialize, Debug)]
 pub struct DHLPackageItemHistory {
     #[serde(rename = "events")]
-    pub events: Vec<DHLPackageItemHistoryEvent>,
+    pub events: Option<Vec<DHLPackageItemHistoryEvent>>,
     #[serde(rename = "aktuellerStatus")]
-    pub current_status: String,
+    pub current_status: Option<String>,
     #[serde(rename = "fortschritt")]
     pub steps: u64,
+}
+
+#[derive(Deserialize, Debug)]
+pub struct DHLPackageNotFoundInfo {
+    #[serde(rename = "keineDatenVerfuegbar")]
+    pub no_data_available: bool,
+    #[serde(rename = "keineDhlPaketSendung")]
+    pub not_a_dhl_package: bool
 }
 
 #[derive(Deserialize, Debug)]
@@ -46,7 +54,7 @@ pub struct DHLPackageItemDetails {
     #[serde(rename = "sendungsverlauf")]
     pub history: DHLPackageItemHistory,
     #[serde(rename = "zielland")]
-    pub destination_country: String,
+    pub destination_country: Option<String>,
 }
 #[derive(Deserialize, Debug)]
 pub struct DHLPackageItem {
@@ -58,6 +66,9 @@ pub struct DHLPackageItem {
 
     #[serde(rename = "sendungsdetails")]
     pub item_details: DHLPackageItemDetails,
+
+    #[serde(rename = "sendungNichtGefunden")]
+    pub package_not_found: Option<DHLPackageNotFoundInfo>
 }
 
 #[derive(Deserialize, Debug)]
