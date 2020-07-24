@@ -1,0 +1,70 @@
+{
+  "sendungen": [
+    {
+      "id": "523361125086",
+      "hasCompleteDetails": true,
+      "sendungsinfo": { "gesuchteSendungsnummer": "523361125086" },
+      "sendungsdetails": {
+        "sendungsnummern": { "sendungsnummer": "523361125086" },
+        "eigenschaften": {},
+        "sendungsverlauf": {
+          "datumAktuellerStatus": "2020-07-24T02:19:00+02:00",
+          "aktuellerStatus": "Shipment sent directly from parcel center to business customer",
+          "kurzStatus": "The shipment has been sent directly from the parcel center to the business customer.",
+          "fortschritt": 5,
+          "farbe": 0,
+          "iconId": "5",
+          "events": [
+            {
+              "datum": "2020-07-22T16:39:00+02:00",
+              "status": "The shipment has been taken from the PACKSTATION for onward transportation",
+              "ruecksendung": false
+            },
+            {
+              "datum": "2020-07-23T15:39:00+02:00",
+              "ort": "Hannover",
+              "status": "The shipment has been processed in the parcel center",
+              "ruecksendung": false
+            },
+            {
+              "datum": "2020-07-23T15:40:00+02:00",
+              "status": "Shipment sent directly from parcel center to business customer",
+              "ruecksendung": false
+            },
+            {
+              "datum": "2020-07-24T02:18:00+02:00",
+              "ort": "Neumark",
+              "status": "The shipment has been processed in the parcel center",
+              "ruecksendung": false
+            },
+            {
+              "datum": "2020-07-24T02:19:00+02:00",
+              "status": "Shipment sent directly from parcel center to business customer",
+              "ruecksendung": false
+            }
+          ]
+        },
+        "services": {
+          "statusbenachrichtigung": {
+            "aktuellerStatus": true,
+            "geplanteZustellung": false,
+            "erfolgteZustellung": false
+          }
+        },
+        "zustellung": {
+          "showAbholcode": false,
+          "abholcodeAvailable": false,
+          "zugestelltAnPackstation": false,
+          "benachrichtigtInFiliale": false
+        },
+        "zielland": "Germany",
+        "istZugestellt": true,
+        "ruecksendung": false,
+        "retoure": false,
+        "warenpost": false,
+        "expressSendung": false
+      },
+      "versandDatumBenoetigt": false
+    }
+  ]
+}
