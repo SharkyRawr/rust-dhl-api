@@ -16,7 +16,25 @@ mod tests {
 </script>
 "#;
 
-        let res = dhl_tracker::find_and_derez_json(&EXAMPLE_BODY).unwrap();
+        let res = dhl_api::find_and_derez_json(&EXAMPLE_BODY).unwrap();
+        let item = res.items.first().unwrap();
+        println!("{:?}", item);
+
+        assert_eq!(item.id, 523361125086);
+        assert_eq!(item.has_complete_details, true);
+        
+        let item_details = &item.item_details;
+        assert_eq!(item_details.destination_country, "Germany");
+        let history = &item_details.history;
+        assert_eq!(history.steps, 5);
+        let events = &history.events;
+        assert_ne!(events.len(), 0);
+        assert_eq!(events.first().unwrap().return_shipment, false);
+    }
+
+    #[tokio::test]
+    async fn test_fetch() {
+        let res = dhl_api::get_dhl_package_status(5233611250866).await.unwrap();
         let item = res.items.first().unwrap();
         println!("{:?}", item);
 

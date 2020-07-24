@@ -83,7 +83,7 @@ pub fn find_and_derez_json(body: &str) -> Result<DHLPackageStatus> {
     Ok(r)
 }
 
-pub async fn get_dhl_package_status(package_id: &str) -> Result<DHLPackageStatus, anyhow::Error> {
+pub async fn get_dhl_package_status(package_id: u64) -> Result<DHLPackageStatus, anyhow::Error> {
     let my_url = format!("https://www.dhl.de/int-verfolgen/?lang=en&domain=de&lang=en&domain=de&lang=en&domain=de&lang=en&domain=de&piececode={}", package_id);
     let body = reqwest::get(&my_url)
         .await?
