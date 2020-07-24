@@ -4,21 +4,6 @@ use regex::Regex;
 
 const DHL_JSON_REGEXP: &str = r#".*initialState: JSON\.parse\((.+")\).*"#;
 
-mod deserialize_as_thingie {
-    use serde_json;
-    use serde::de::{Deserialize, DeserializeOwned, Deserializer};
-    
-    pub fn deserialize<'de, T, D>(deserializer: D) -> Result<T, D::Error>
-    where
-        T: DeserializeOwned,
-        D: Deserializer<'de>,
-    {
-        use serde::de::Error;
-        let j = String::deserialize(deserializer)?;
-        serde_json::from_str(&j).map_err(Error::custom)
-    }
-}
-
 #[derive(Deserialize, Debug)]
 pub struct DHLPackageItemHistoryEvent {
     #[serde(rename = "datum")]
@@ -58,8 +43,8 @@ pub struct DHLPackageItemDetails {
 }
 #[derive(Deserialize, Debug)]
 pub struct DHLPackageItem {
-    #[serde(with = "deserialize_as_thingie")]
-    pub id: u64,
+
+    pub id: String,
     
     #[serde(rename = "hasCompleteDetails")]
     pub has_complete_details: bool,
@@ -94,7 +79,8 @@ pub fn find_and_derez_json(body: &str) -> Result<DHLPackageStatus> {
     Ok(r)
 }
 
-pub async fn get_dhl_package_status(package_id: u64) -> Result<DHLPackageStatus, anyhow::Error> {
+/// 
+pub async fn get_dhl_package_status(package_id: &str) -> Result<DHLPackageStatus, anyhow::Error> {
     let my_url = format!("https://www.dhl.de/int-verfolgen/?lang=en&domain=de&lang=en&domain=de&lang=en&domain=de&lang=en&domain=de&piececode={}", package_id);
     let body = reqwest::get(&my_url)
         .await?

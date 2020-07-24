@@ -20,7 +20,7 @@ mod tests {
         let item = res.items.first().unwrap();
         println!("{:?}", item);
 
-        assert_eq!(item.id, 523361125086);
+        assert_eq!(item.id, "523361125086");
         assert_eq!(item.has_complete_details, true);
         
         let item_details = &item.item_details;
@@ -34,11 +34,11 @@ mod tests {
 
     #[tokio::test]
     async fn test_fetch() {
-        let res = dhl_api::get_dhl_package_status(523361125086).await.unwrap();
+        let res = dhl_api::get_dhl_package_status("523361125086").await.unwrap();
         let item = res.items.first().unwrap();
         println!("{:?}", item);
 
-        assert_eq!(item.id, 523361125086);
+        assert_eq!(item.id, "523361125086");
         assert_eq!(item.has_complete_details, true);
 
         let package_found = item.package_not_found.as_ref();
