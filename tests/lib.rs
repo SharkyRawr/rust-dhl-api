@@ -2,7 +2,6 @@
 mod tests {
     #[test]
     fn test_derez() {
-
         const EXAMPLE_BODY: &str = r#"
         <script>
   
@@ -16,15 +15,18 @@ mod tests {
 </script>
 "#;
 
-        let res = dhl_api::find_and_derez_json(&EXAMPLE_BODY).unwrap();
+        let res = dhl_api::get_dhl_package_from_html(&EXAMPLE_BODY).unwrap();
         let item = res.items.first().unwrap();
         println!("{:?}", item);
 
         assert_eq!(item.id, "523361125086");
         assert_eq!(item.has_complete_details, true);
-        
+
         let item_details = &item.item_details;
-        assert_eq!(item_details.destination_country.as_ref().unwrap(), "Germany");
+        assert_eq!(
+            item_details.destination_country.as_ref().unwrap(),
+            "Germany"
+        );
         let history = &item_details.history;
         assert_eq!(history.steps, 5);
         let events = &history.events.as_ref().unwrap();
@@ -34,7 +36,9 @@ mod tests {
 
     #[tokio::test]
     async fn test_fetch() {
-        let res = dhl_api::get_dhl_package_status("523361125086").await.unwrap();
+        let res = dhl_api::get_dhl_package_status("523361125086")
+            .await
+            .unwrap();
         let item = res.items.first().unwrap();
         println!("{:?}", item);
 
@@ -44,13 +48,17 @@ mod tests {
         let package_found = item.package_not_found.as_ref();
         if package_found.is_some() {
             // Skip the rest of the test because there is no data available for this package id
-            if package_found.unwrap().no_data_available || package_found.unwrap().not_a_dhl_package {
+            if package_found.unwrap().no_data_available || package_found.unwrap().not_a_dhl_package
+            {
                 return;
             }
         }
-        
+
         let item_details = &item.item_details;
-        assert_eq!(item_details.destination_country.as_ref().unwrap(), "Germany");
+        assert_eq!(
+            item_details.destination_country.as_ref().unwrap(),
+            "Germany"
+        );
         let history = &item_details.history;
         assert_eq!(history.steps, 5);
         let events = history.events.as_ref().unwrap();
