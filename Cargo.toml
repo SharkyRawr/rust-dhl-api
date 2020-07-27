@@ -3,6 +3,13 @@ name = "dhl-api"
 version = "0.0.1"
 authors = ["Sophie 'Sharky' Schumann <sharky@sharky.pw>"]
 edition = "2018"
+description = "Query public tracking info from the DHL.de website"
+homepage = "https://github.com/SharkyRawr/rust-dhl-api"
+repository = "https://github.com/SharkyRawr/rust-dhl-api"
+readme = "README.md"
+license-file = "LICENSE"
+keywords = ["api", "dhl", "tracking"]
+categories = ["api-bindings"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
