@@ -1,13 +1,12 @@
 [package]
 name = "dhl-api"
-version = "0.0.1"
+version = "0.0.2"
 authors = ["Sophie 'Sharky' Schumann <sharky@sharky.pw>"]
 edition = "2018"
 description = "Query public tracking info from the DHL.de website"
 repository = "https://github.com/SharkyRawr/rust-dhl-api"
 readme = "README.md"
 license = "MIT"
-license-file = "LICENSE"
 keywords = ["api", "dhl", "tracking"]
 categories = ["api-bindings"]
 
