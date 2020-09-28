@@ -1,3 +1,5 @@
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W52AOXC)
+
 # Rust DHL API
 
 **Rust DHL API** provides a way to query the public www.DHL.de package tracking website for information on parcels *from rust*. Yay!
